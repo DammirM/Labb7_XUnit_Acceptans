@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Labb7_XUnit_Acceptans.csproj" />
+  </ItemGroup>
+
 </Project>

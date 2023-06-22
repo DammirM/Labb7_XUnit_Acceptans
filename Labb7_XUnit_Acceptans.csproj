@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Labb7_XUnit_Acceptans_Test\**" />
+    <EmbeddedResource Remove="Labb7_XUnit_Acceptans_Test\**" />
+    <None Remove="Labb7_XUnit_Acceptans_Test\**" />
+  </ItemGroup>
+
 </Project>
