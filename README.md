@@ -28,6 +28,7 @@ Test 2 test av Subtraction
 2.6. Tryck enter igen för att komma till programmets start.
 
 Test 3 test av Logg
+
 3.1. Starta Programmet
 
 3.2. Välj Logg genom att skriva ”5” och sedan tryck enter.
