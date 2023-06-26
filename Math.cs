@@ -8,7 +8,7 @@ namespace Labb7_XUnit_Acceptans
 {
     public class Math
     {
-        private List<Logg> log;
+        public List<Logg> log;
         public Math()
         {
             log = new List<Logg>();

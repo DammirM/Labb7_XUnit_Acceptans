@@ -42,9 +42,9 @@
 
                 case "1":
                     operate = "+";
-                    Console.WriteLine(TextForNum1());
+                    Console.Write(TextForNum1());
                     num1 = getNum();
-                    Console.WriteLine(TextForNum2());
+                    Console.Write(TextForNum2());
                     num2 = getNum();
                     result = calculator.Add(num1, num2);
                     Console.Write(SeeResult(result));
@@ -53,9 +53,9 @@
 
                 case "2":
                     operate = "-";
-                    Console.WriteLine(TextForNum1());
+                    Console.Write(TextForNum1());
                     num1 = getNum();
-                    Console.WriteLine(TextForNum2());
+                    Console.Write(TextForNum2());
                     num2 = getNum();
                     result = calculator.Subtract(num1, num2);
                     Console.Write(SeeResult(result));
@@ -64,9 +64,9 @@
 
                 case "3":
                     operate = "/";
-                    Console.WriteLine(TextForNum1());
+                    Console.Write(TextForNum1());
                     num1 = getNum();
-                    Console.WriteLine(TextForNum2());
+                    Console.Write(TextForNum2());
                     num2 = getNum();
                     result = calculator.Divide(num1, num2);
                     Console.Write(SeeResult(result));
@@ -75,7 +75,7 @@
 
                 case "4":
                     operate = "*";
-                    Console.WriteLine(TextForNum1());
+                    Console.Write(TextForNum1());
                     num1 = getNum();
                     Console.Write(TextForNum2());
                     num2 = getNum();
@@ -116,7 +116,7 @@
 
         public static string SeeResult(double result)
         {
-            return $"Answer: \n{result}";
+            return $"\nAnswer: {result}";
         }
     }
 }

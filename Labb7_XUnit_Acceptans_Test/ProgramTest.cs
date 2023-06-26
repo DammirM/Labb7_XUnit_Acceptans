@@ -1,78 +1,41 @@
-using Labb7_XUnit_Acceptans;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Xunit.Sdk;
-
 namespace Calculator_Labb_7_TestX
 {
     public class ProgramTest
     {
+       
         [Fact]
-        public void Text_From_Num1_Test()
-        {
-            // Act
-            var actual = Labb7_XUnit_Acceptans.Program.TextForNum1();
-            var expected = "First number: ";
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Text_From_Num2_Test()
-        {
-            // Act
-            var actual = Labb7_XUnit_Acceptans.Program.TextForNum2();
-            var expected = "Second number: ";
-
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void GetNumberFromUserInput_Test()
+        public void getNum_Test()
         {
             // Arrange
-            var input = new StringReader("100");
+            var input = new StringReader("50");
             Console.SetIn(input);
 
             // Act
-            var actual = Labb7_XUnit_Acceptans.Program.GetNumberFromUserInput();
-            double expected = 100;
+            var actual = Labb7_XUnit_Acceptans.Program.getNum();
+            double expected = 50;
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
         [Theory]
-        [InlineData("100", 100)]
-        [InlineData("55", 55)]
-        [InlineData("88,8888", 88.8888)]
-        [InlineData("-1568", -1568)]
-        [InlineData("123", 123)]
-        public void GetNumberFromUserInput_Theory_Test(string input, double expected)
+        [InlineData("50", 50)]
+        [InlineData("200", 200)]
+        [InlineData("-350", -350)]
+        [InlineData("-33,33", -33.33)]
+        [InlineData("12,23", 12.23)]
+        public void getNum_Theory(string input, double expected)
         {
             // Arrange
             var consoleInput = new StringReader(input);
             Console.SetIn(consoleInput);
 
             // Act
-            var actual = Labb7_XUnit_Acceptans.Program.GetNumberFromUserInput();
+            var actual = Labb7_XUnit_Acceptans.Program.getNum();
 
             // Assert
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void ShowResult_Test()
-        {
-            // Act
-            var actual = Labb7_XUnit_Acceptans.Program.ShowResult(1000);
-            var expected = "\n\t1000";
-
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
     }
 }

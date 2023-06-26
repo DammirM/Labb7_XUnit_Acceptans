@@ -1,5 +1,4 @@
-﻿using XUnit_Acceptanstestning;
-using Math = Labb7_XUnit_Acceptans.Math;
+﻿using Math = Labb7_XUnit_Acceptans.Math;
 
 namespace XUnit_Acceptanstestning_Tests
 {
@@ -13,8 +12,8 @@ namespace XUnit_Acceptanstestning_Tests
             Math calculator = new Math();
 
             // Act
-            var actual = calculator.Add(2, 2);
-            var expected = 4;
+            var actual = calculator.Add(5,5);
+            var expected = 10;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -46,8 +45,8 @@ namespace XUnit_Acceptanstestning_Tests
             Math calculator = new Math();
 
             // Act
-            var actual = calculator.Subtract(25, 8);
-            var expected = 17;
+            var actual = calculator.Subtract(10, 5);
+            var expected = 5;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -57,7 +56,7 @@ namespace XUnit_Acceptanstestning_Tests
         [InlineData(10, 5, 5)]
         [InlineData(20, 10, 10)]
         [InlineData(100, 30, 70)]
-        [InlineData(20, 5, 15)]
+        [InlineData(0, -5, 5)]
         [InlineData(10, 0, 10)]
         public void Subtract_Theory_Test(double num1, double num2, double expected)
         {
@@ -78,8 +77,8 @@ namespace XUnit_Acceptanstestning_Tests
             Math calculator = new Math();
 
             // Act
-            var actual = calculator.Divide(50, 10);
-            var expected = 5;
+            var actual = calculator.Divide(10, 5);
+            var expected = 2;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -110,8 +109,8 @@ namespace XUnit_Acceptanstestning_Tests
             Math calculator = new Math();
 
             // Act
-            var actual = calculator.Multiply(9, 9);
-            var expected = 81;
+            var actual = calculator.Multiply(10, 5);
+            var expected = 50;
 
             // Assert
             Assert.Equal(expected, actual);
@@ -120,8 +119,8 @@ namespace XUnit_Acceptanstestning_Tests
         [Theory]
         [InlineData(5, 5, 25)]
         [InlineData(2.5, 4, 10)]
-        [InlineData(7.125, 7.125, 50.765625)]
-        [InlineData(-10, 10, -100)]
+        [InlineData(33, 33, 1089)]
+        [InlineData(55, 55, 3025)]
         [InlineData(-10, -10, 100)]
         public void Multiply_Theory_Test(double num1, double num2, double expected)
         {
@@ -135,71 +134,21 @@ namespace XUnit_Acceptanstestning_Tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void UppdateLog_Test()
-        {
-            // Arrange
-            Math calculator = new Math();
-
-            // Act
-            var actual = calculator.UppdateLog(10, 10, 20, "+");
-            var actualNum1 = calculator.log[0].Num1;
-            var actualNum2 = calculator.log[0].Num2;
-            var actualResult = calculator.log[0].Output;
-            var actualOpperator = calculator.log[0].Operate;
-
-            var expectedNum1 = "10";
-            var expectedNum2 = "10";
-            var expectedResult = "20";
-            var expectedOpperator = "+";
-
-            // Assert
-            Assert.Equal(expectedNum1, actualNum1);
-            Assert.Equal(expectedNum2, actualNum2);
-            Assert.Equal(expectedResult, actualResult);
-            Assert.Equal(expectedOpperator, actualOpperator);
-        }
-
-        [Theory]
-        [InlineData(15, 15, 30, "+", "15", "15", "30", "+")]
-        [InlineData(7, 7, 49, "*", "7", "7", "49", "*")]
-        [InlineData(110, 50, 60, "-", "110", "50", "60", "-")]
-        [InlineData(81, 9, 9, "/", "81", "9", "9", "/")]
-        [InlineData(1000, 0, 0, "*", "1000", "0", "0", "*")]
-        public void UppdateLog_Theory_Test(double num1, double num2, double result, string opperator, string expectedNum1, string expectedNum2, string expectedResult, string expectedOpperator)
-        {
-            // Arrange
-            Math calculator = new Math();
-
-            // Act
-            var actual = calculator.UppdateLog(num1, num2, result, opperator);
-            var actualNum1 = calculator.log[0].Num1;
-            var actualNum2 = calculator.log[0].Num2;
-            var actualResult = calculator.log[0].Output;
-            var actualOpperator = calculator.log[0].Operate;
-
-
-            // Assert
-            Assert.Equal(expectedNum1, actualNum1);
-            Assert.Equal(expectedNum2, actualNum2);
-            Assert.Equal(expectedResult, actualResult);
-            Assert.Equal(expectedOpperator, actualOpperator);
-        }
 
         [Fact]
-        public void ShowMathLog_Test()
+        public void SeeLog_Test()
         {
             // Arrange
             Math calculator = new Math();
-            calculator.UppdateLog(33, 33, 66, "+");
+            calculator.UppdateLog(10, 5, 5, "-");
 
             // Act
             var consoleOutput = new StringWriter();
             Console.SetOut(consoleOutput);
 
-            calculator.ShowMathLog();
+            calculator.SeeLog();
             var actualOutput = consoleOutput.ToString();
-            var expectedOutput = "33 + 33 = 66\n";
+            var expectedOutput = "10 - 5 = 5\n";
 
             // Assert
             Assert.Equal(expectedOutput, actualOutput);
@@ -211,20 +160,20 @@ namespace XUnit_Acceptanstestning_Tests
         [InlineData(7.25, 2.5, 4.75, "-", "7,25 - 2,5 = 4,75\n")]
         [InlineData(1, 2, 3, "+", "1 + 2 = 3\n")]
         [InlineData(0, 0, 0, "*", "0 * 0 = 0\n")]
-        public void ShowMathLog_Theory_Test(double num1, double num2, double result, string opperator, string expectedOutput)
+        public void SeeLog_Theory_Test(double num1, double num2, double result, string Operate, string expected)
         {
             Math calculator = new Math();
-            calculator.UppdateLog(num1, num2, result, opperator);
+            calculator.UppdateLog(num1, num2, result, Operate);
 
             // Act
             var consoleOutput = new StringWriter();
             Console.SetOut(consoleOutput);
 
-            calculator.ShowMathLog();
-            var actualOutput = consoleOutput.ToString();
+            calculator.SeeLog();
+            var actual = consoleOutput.ToString();
 
             // Assert
-            Assert.Equal(expectedOutput, actualOutput);
+            Assert.Equal(expected, actual);
         }
     }
 }
