@@ -63,14 +63,24 @@
                     break;
 
                 case "3":
-                    operate = "/";
-                    Console.Write(TextForNum1());
-                    num1 = getNum();
-                    Console.Write(TextForNum2());
-                    num2 = getNum();
-                    result = calculator.Divide(num1, num2);
-                    Console.Write(SeeResult(result));
-                    Console.ReadLine();
+                    while (true)
+                    {
+                        operate = "/";
+                        Console.Write(TextForNum1());
+                        num1 = getNum();
+                        Console.Write(TextForNum2());
+                        num2 = getNum();
+                        if (num1 != 0 && num2 != 0)
+                        {
+                            result = calculator.Divide(num1, num2);
+                            Console.Write(SeeResult(result));
+                            Console.ReadLine();
+                            break;
+                        }
+                        Console.WriteLine("You can not divide by 0, Press Enter and try again");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
                     break;
 
                 case "4":

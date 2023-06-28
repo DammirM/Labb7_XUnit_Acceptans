@@ -147,11 +147,11 @@ namespace XUnit_Acceptanstestning_Tests
             Console.SetOut(consoleOutput);
 
             calculator.SeeLog();
-            var actualOutput = consoleOutput.ToString();
-            var expectedOutput = "10 - 5 = 5\n";
+            var actual = consoleOutput.ToString();
+            var expected = "10 - 5 = 5\n";
 
             // Assert
-            Assert.Equal(expectedOutput, actualOutput);
+            Assert.Equal(expected, actual);
         }
 
         [Theory]
